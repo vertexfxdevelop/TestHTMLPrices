@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TestHTMLPrices"
+             x:Class="TestHTMLPrices.MainPage"
+             Title="Main Page"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
+    <ContentPage.BindingContext>
+        <vm:QuotesViewModel />
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <ListView 
+            ItemsSource="{Binding Symbols}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Margin="3,0" RowSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                Text="{Binding Name}"
+                                TextColor="Gray"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"/>
+
+                            <Label      Text="{Binding Bid}"
+                                    Grid.Column="1"
+                                    Margin="0"
+                                    Padding="0"
+                                    FontSize="24"
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Red"
+                                    TextType="Html"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
